@@ -104,7 +104,8 @@ p { margin-bottom: 1rem; }
 .btn-lg { padding: 1.1rem 2.8rem; font-size: 0.95rem; }
 
 /* ── HEADER / NAV ── */
-.header {
+.header,
+.site-header {
   position: fixed;
   top: 0;
   left: 0;
@@ -113,7 +114,8 @@ p { margin-bottom: 1rem; }
   background: transparent;
   transition: all var(--transition);
 }
-.header.scrolled {
+.header.scrolled,
+.site-header.scrolled {
   background: var(--navy);
   box-shadow: var(--shadow-lg);
 }
@@ -1056,4 +1058,401 @@ p { margin-bottom: 1rem; }
   .team-grid { grid-template-columns: 1fr 1fr; }
   .promise-grid { grid-template-columns: 1fr; }
   .dropdown-menu.two-col { min-width: 280px; grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════
+   PREMIUM INTERACTIVITY ENHANCEMENTS
+   Inspired by calfaslaw.com
+   ═══════════════════════════════════════════ */
+
+/* ── 1. PRELOADER ── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+.preloader-logo {
+  animation: pulse 1.5s ease infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* ── 2. SCROLL PROGRESS BAR ── */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  background-size: 200% 100%;
+  z-index: 10001;
+  transition: width 0.05s linear;
+  box-shadow: 0 0 8px rgba(140,140,140,0.4);
+}
+
+/* ── 3. FLOATING CTA ── */
+.floating-cta {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 900;
+  opacity: 0;
+  transform: translateY(20px) scale(0.9);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.85rem 1.5rem;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border: 1px solid rgba(140,140,140,0.2);
+  text-decoration: none;
+  cursor: pointer;
+}
+.floating-cta:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+  border-color: var(--gold);
+}
+.floating-cta.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: all;
+}
+.floating-cta svg {
+  animation: floatingPulse 2s ease infinite;
+}
+@keyframes floatingPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* ── 4. ENHANCED CARD HOVER EFFECTS ── */
+.value-card:hover,
+.service-card:hover,
+.review-card:hover,
+.pricing-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--gold);
+}
+.review-card {
+  transition: all var(--transition);
+}
+
+/* ── 5. BUTTON RIPPLE EFFECT ── */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 70%);
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.3s;
+}
+.btn:active::after {
+  transform: scale(2.5);
+  opacity: 1;
+  transition: 0s;
+}
+
+/* ── 6. TEXT REVEAL ANIMATION ── */
+.text-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+.text-reveal.visible {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ── 7. ENHANCED SCROLL ANIMATIONS ── */
+.fade-in {
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translateY(30px) scale(0.95);
+}
+.fade-in.visible {
+  transform: translateY(0) scale(1);
+}
+.fade-in-left {
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.fade-in-right {
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── 8. GRADIENT FALLBACK FOR HERO (video fail) ── */
+.hero-gradient-fallback {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 30%, #1a1a2e 60%, #3d3d5c 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+  display: none;
+}
+.hero-gradient-fallback.active {
+  display: block;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── 9. NAVBAR ENHANCEMENTS ── */
+.header.scrolled,
+.site-header.scrolled {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(26, 26, 46, 0.95) !important;
+  border-bottom: 1px solid rgba(140, 140, 140, 0.15);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(140, 140, 140, 0.05);
+}
+.nav-links .dropdown-menu {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  transform-origin: top center;
+  transform: translateY(10px) scaleY(0.95);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-links .dropdown:hover .dropdown-menu {
+  transform: translateY(0) scaleY(1);
+}
+
+/* ── 10. SMOOTH PAGE TRANSITION ── */
+.page-transition-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: var(--navy);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.page-transition-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+body.transitioning {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ── 11. LEARN MORE ARROW ANIMATION ── */
+.learn-more::after,
+.service-link svg {
+  display: inline-block;
+  transition: transform 0.3s ease, margin-left 0.3s ease;
+}
+.learn-more:hover::after {
+  margin-left: 0.5rem;
+}
+.service-link:hover svg {
+  transform: translateX(5px);
+}
+
+/* ── 12. PRELOADER SPINNER ── */
+.preloader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.preloader-name {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--white);
+  display: block;
+  text-align: center;
+}
+.preloader-tagline {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+}
+.preloader-spinner {
+  width: 40px;
+  height: 40px;
+}
+.spinner-ring {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(140,140,140,0.2);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spinnerRotate 0.8s linear infinite;
+}
+@keyframes spinnerRotate {
+  to { transform: rotate(360deg); }
+}
+
+/* ── 13. CURSOR GLOW EFFECT ── */
+.cursor-glow {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(140,140,140,0.25) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 99998;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+.cursor-glow.active {
+  opacity: 1;
+  width: 50px;
+  height: 50px;
+}
+
+/* ── 14. MEGA DROPDOWN ANIMATION ── */
+.mega-dropdown {
+  transform-origin: top center;
+  transform: translateY(10px) scaleY(0.95);
+  opacity: 0;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+}
+.has-dropdown:hover .mega-dropdown,
+.has-dropdown.dropdown-open .mega-dropdown {
+  transform: translateY(0) scaleY(1);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── 15. TESTIMONIAL CAROUSEL NAV ── */
+.reviews-grid {
+  position: relative;
+}
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--gray-light);
+  background: var(--white);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+.carousel-btn:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gray-light);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.carousel-dot.active {
+  background: var(--gold);
+  transform: scale(1.2);
+}
+
+/* ── 16. SECTION PARALLAX ── */
+.section-parallax {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+/* ── 17. STAGGER ANIMATION DELAYS ── */
+.stagger-1 { transition-delay: 0s !important; }
+.stagger-2 { transition-delay: 0.12s !important; }
+.stagger-3 { transition-delay: 0.24s !important; }
+.stagger-4 { transition-delay: 0.36s !important; }
+.stagger-5 { transition-delay: 0.48s !important; }
+.stagger-6 { transition-delay: 0.6s !important; }
+
+/* ── 18. COUNTER ANIMATION STAT ITEMS ── */
+.stat-number {
+  transition: all 0.3s ease;
+}
+.stat-item {
+  transition: transform 0.3s ease;
+}
+.stat-item:hover {
+  transform: scale(1.05);
+}
+
+/* ── 12. STEP NUMBER PULSE ON HOVER ── */
+.step-number {
+  transition: all 0.4s ease;
+}
+.step-number:hover {
+  box-shadow: 0 0 0 8px rgba(140, 140, 140, 0.15),
+              0 0 0 16px rgba(140, 140, 140, 0.07);
+  transform: scale(1.05);
+}
+
+/* ── 13. RESPONSIVE FLOATING CTA ── */
+@media (max-width: 640px) {
+  .floating-cta {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    text-align: center;
+  }
+  .floating-cta {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.75rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .floating-cta span { display: none; }
+}
+@media (max-width: 480px) {
+  .floating-cta span { display: none; }
+  .floating-cta { padding: 0.75rem; }
 }

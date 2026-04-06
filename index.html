@@ -210,6 +210,25 @@
 </head>
 <body>
 
+    <!-- ========== PRELOADER ========== -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">
+                <span class="preloader-name">Joe's Probate</span>
+                <span class="preloader-tagline">Services</span>
+            </div>
+            <div class="preloader-spinner">
+                <div class="spinner-ring"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== SCROLL PROGRESS BAR ========== -->
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
+
+    <!-- ========== PAGE TRANSITION OVERLAY ========== -->
+    <div class="page-transition-overlay" id="pageTransitionOverlay"></div>
+
     <!-- ========== HEADER / NAVIGATION ========== -->
     <header class="site-header" id="header">
         <div class="container header-inner">
@@ -284,9 +303,10 @@
     <!-- ========== HERO SECTION ========== -->
     <section class="hero" id="hero">
         <div class="hero-video-wrap">
-            <video class="hero-video" autoplay muted loop playsinline poster="img/hero-poster.jpg">
-                <source src="https://videos.pexels.com/video-files/4065924/4065924-uhd_2560_1440_30fps.mp4" type="video/mp4">
+            <video class="hero-video" autoplay muted loop playsinline poster="img/hero-poster.jpg" id="heroVideo">
+                <source src="img/hero-video.mp4" type="video/mp4">
             </video>
+            <div class="hero-gradient-fallback" id="heroGradientFallback"></div>
             <div class="hero-overlay"></div>
         </div>
         <div class="container hero-content">
@@ -800,6 +820,15 @@
             </div>
         </div>
     </section>
+
+    <!-- ========== FLOATING CTA ========== -->
+    <a href="#consultation" class="floating-cta" id="floatingCta" aria-label="Free Consultation">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>Free Consultation</span>
+    </a>
+
+    <!-- ========== CURSOR GLOW ========== -->
+    <div class="cursor-glow" id="cursorGlow"></div>
 
     <!-- ========== FOOTER ========== -->
     <footer class="site-footer">

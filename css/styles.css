@@ -2291,11 +2291,21 @@ html.js-ready .fade-in-right.visible {
   }
 
   .container {
+    width: 92%;
     padding: 0 1.5rem;
   }
 
   h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
   h2 { font-size: clamp(1.5rem, 4vw, 2rem); }
+
+  /* Hide video on tablet — use poster image */
+  .hero-video {
+    display: none !important;
+  }
+
+  .hero-video-wrap {
+    background: url('../img/hero-poster.jpg') center center / cover no-repeat;
+  }
 
   .hero-title {
     font-size: clamp(2rem, 6vw, 3rem);
@@ -2434,6 +2444,15 @@ html.js-ready .fade-in-right.visible {
 
   .section-desc {
     font-size: 0.9rem;
+  }
+
+  /* Hide video on mobile — use poster image instead */
+  .hero-video {
+    display: none !important;
+  }
+
+  .hero-video-wrap {
+    background: url('../img/hero-poster.jpg') center center / cover no-repeat;
   }
 
   .hero {

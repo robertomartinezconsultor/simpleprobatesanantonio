@@ -2416,27 +2416,187 @@ html.js-ready .fade-in-right.visible {
   }
 
   .container {
+    width: 92%;
     padding: 0 1rem;
   }
 
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.2rem; }
+
+  .section-header {
+    margin-bottom: 2rem;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+  }
+
+  .section-desc {
+    font-size: 0.9rem;
+  }
+
   .hero {
-    min-height: 90vh;
+    min-height: 100vh;
+    min-height: 100svh;
   }
 
   .hero-title {
-    font-size: clamp(1.8rem, 7vw, 2.5rem);
+    font-size: 1.8rem;
+    line-height: 1.25;
   }
 
   .hero-subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+
+  .trust-badges {
+    flex-direction: column;
+    gap: 0.6rem;
+    align-items: center;
+  }
+
+  .trust-badge {
+    font-size: 0.8rem;
+  }
+
+  .hero-scroll-indicator {
+    display: none;
   }
 
   .value-grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .value-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  .step-number {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .service-card {
+    padding: 1.5rem;
   }
 
   .stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .reviews-grid {
     grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .review-card {
+    padding: 1.2rem;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+    padding: 1.2rem 0;
+  }
+
+  .cta-banner {
+    padding: 2.5rem 1rem;
+  }
+
+  .cta-banner h2 {
+    font-size: 1.5rem;
+  }
+
+  .cta-banner p {
+    font-size: 0.9rem;
+  }
+
+  .cta-banner-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .cta-banner-actions .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-form-wrap {
+    padding: 1.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info-card {
+    padding: 1.5rem;
+  }
+
+  .pricing-grid,
+  .pricing-table-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
   }
 
   .header-cta {
@@ -2445,10 +2605,6 @@ html.js-ready .fade-in-right.visible {
 
   .lang-toggle {
     display: none;
-  }
-
-  .contact-form-wrap {
-    padding: 1.5rem;
   }
 
   .floating-cta {
@@ -2475,13 +2631,39 @@ html.js-ready .fade-in-right.visible {
     grid-template-columns: 1fr;
   }
 
-  .cta-banner-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .breadcrumb {
     font-size: 0.78rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .btn-lg {
+    padding: 0.85rem 2rem;
+    font-size: 0.85rem;
+  }
+
+  .mobile-nav {
+    width: 90%;
+  }
+
+  .addons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .promise-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .pull-quote {
+    font-size: 1.2rem;
+    padding-left: 1rem;
   }
 }
 

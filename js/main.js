@@ -4,6 +4,9 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+  // Signal that JS is working — enables CSS animations
+  document.documentElement.classList.add('js-ready');
+
   /* -----------------------------------------------
      1. PRELOADER
      ----------------------------------------------- */

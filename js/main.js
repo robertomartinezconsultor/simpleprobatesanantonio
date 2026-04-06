@@ -33,31 +33,18 @@ document.addEventListener('DOMContentLoaded', function () {
   var heroVideo = document.getElementById('heroVideo');
   var gradientFallback = document.getElementById('heroGradientFallback');
 
-  if (heroVideo && gradientFallback) {
+  if (heroVideo) {
+    // Only show gradient fallback if video completely fails to load
     heroVideo.addEventListener('error', function () {
-      gradientFallback.classList.add('active');
-      heroVideo.style.display = 'none';
+      if (gradientFallback) gradientFallback.classList.add('active');
     });
-
-    // Also check sources
-    var sources = heroVideo.querySelectorAll('source');
-    var sourceErrors = 0;
-    sources.forEach(function (src) {
-      src.addEventListener('error', function () {
-        sourceErrors++;
-        if (sourceErrors >= sources.length) {
-          gradientFallback.classList.add('active');
-          heroVideo.style.display = 'none';
-        }
+    // Try to play video (some browsers block autoplay)
+    var playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function() {
+        // Autoplay blocked — video still shows first frame, that's fine
       });
-    });
-
-    // Fallback timeout: if video hasn't started playing in 5s, show gradient
-    setTimeout(function () {
-      if (heroVideo.readyState < 2 && heroVideo.paused) {
-        gradientFallback.classList.add('active');
-      }
-    }, 5000);
+    }
   }
 
   /* -----------------------------------------------

@@ -574,6 +574,12 @@ p {
   inset: 0;
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, var(--navy-medium) 100%);
   z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.hero-gradient-fallback.active {
+  opacity: 1;
 }
 
 .hero-overlay {
